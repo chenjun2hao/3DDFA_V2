@@ -131,7 +131,10 @@ def draw_landmarks(img, pts, style='fancy', wfp=None, show_flag=False, **kwargs)
             color = kwargs.get('color', 'w')
             markeredgecolor = kwargs.get('markeredgecolor', 'black')
 
-            nums = [0, 17, 22, 27, 31, 36, 42, 48, 60, 68]
+            if pts[i].shape[1] == 68:
+                nums = [0, 17, 22, 27, 31, 36, 42, 48, 60, 68, 81]
+            elif pts[i].shape[1] == 81:
+                nums = [0, 17, 22, 27, 31, 36, 42, 48, 60, 68, 81]
 
             # close eyes and mouths
             plot_close = lambda i1, i2: plt.plot([pts[i][0, i1], pts[i][0, i2]], [pts[i][1, i1], pts[i][1, i2]],
